@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambadas Rautrao — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --page-bg: #1e2124;
+      --col-bg: #2b2d31;
+      --text: #c8c8c8;
+      --text-light: #999999;
+      --heading: #e0e0e0;
+      --border: #3a3d42;
+      --link: #7aacce;
+      --link-hover: #a0c8e8;
+      --nav-active: #ffffff;
+      --nav-text: #aaaaaa;
+      --tag-bg: #333639;
+      --tag-text: #aaaaaa;
+      --font: 'Open Sans', Arial, sans-serif;
+    }
+
+    body.light {
+      --page-bg: #f0f0f0;
+      --col-bg: #ffffff;
+      --text: #333333;
+      --text-light: #777777;
+      --heading: #111111;
+      --border: #dddddd;
+      --link: #21759b;
+      --link-hover: #0f4f70;
+      --nav-active: #000000;
+      --nav-text: #555555;
+      --tag-bg: #eeeeee;
+      --tag-text: #555555;
+    }
+
+    html {
+      font-size: 15px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--page-bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    /* ── CENTERED COLUMN ── */
+    .page-shell {
+      max-width: 1060px;
+      margin: 0 auto;
+      background: var(--col-bg);
+      min-height: 100vh;
+      transition: background 0.2s;
+    }
+
+    /* ── SITE HEADER (title + tagline above nav) ── */
+    .site-header {
+      padding: 2rem 2.5rem 1.3rem;
+    }
+
+    .site-header h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 0.2rem;
+    }
+
+    .site-header h1 a {
+      color: var(--heading);
+    }
+
+    .site-header h1 a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .site-tagline {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    /* ── NAV BAR ── */
+    .site-nav {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+
+    .site-nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    .site-nav ul li a {
+      display: block;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.77rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--nav-text);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .site-nav ul li a:hover,
+    .site-nav ul li.active a {
+      color: var(--nav-active);
+      text-decoration: none;
+    }
+
+    /* ── BANNER IMAGE ── */
+    .banner-placeholder {
+      width: 100%;
+      height: 195px;
+      background: var(--col-bg);
+      display: flex;
+      background-color: var(--col-bg);
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #4a5a6a;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 2.5rem;
+      box-sizing: border-box;
+    }
+
+    /* ── MAIN CONTENT + SIDEBAR ── */
+    .content-area {
+      display: grid;
+      grid-template-columns: 1fr 255px;
+      padding: 2rem 2.5rem;
+      gap: 0;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .main-col {
+      padding-right: 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .who-heading {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 1rem;
+    }
+
+    .who-body {
+      display: grid;
+      grid-template-columns: 1fr 155px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .who-text p {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+      line-height: 1.75;
+    }
+
+    .who-photo {
+      width: 155px;
+      height: 175px;
+      background: var(--tag-bg);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-top: 2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 1rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    /* ── PROJECT ── */
+    .project {
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.35rem;
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .project-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 1px 7px;
+      border-radius: 2px;
+      font-size: 0.71rem;
+    }
+
+    .project h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .project h3 a {
+      color: var(--link);
+    }
+
+    .project h3 a:hover {
+      color: var(--link-hover);
+    }
+
+    .project p {
+      font-size: 0.87rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 0.55rem;
+      max-width: 58ch;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.82rem;
+    }
+
+    .project-links a {
+      color: var(--link);
+    }
+
+    .project-links a:hover {
+      color: var(--link-hover);
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--heading);
+    }
+
+    .exp-company {
+      font-size: 0.84rem;
+      color: var(--text-light);
+    }
+
+    .exp-year {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    /* ── RIGHT SIDEBAR ── */
+    .sidebar-col {
+      padding-left: 1.8rem;
+    }
+
+    .sidebar-widget {
+      margin-bottom: 1.8rem;
+    }
+
+    .sidebar-widget-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-widget ul {
+      list-style: none;
+    }
+
+    .sidebar-widget ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-widget ul li a {
+      font-size: 0.84rem;
+      color: var(--link);
+      line-height: 1.4;
+    }
+
+    .sidebar-widget ul li a:hover {
+      color: var(--link-hover);
+    }
+
+    /* ── CONTACT WIDGET ── */
+    .contact-widget {
+      background: var(--tag-bg);
+      border-radius: 3px;
+      padding: 0.9rem 1rem;
+    }
+
+    .contact-widget p {
+      color: var(--text-light);
+      font-size: 0.82rem;
+      margin-bottom: 0.7rem;
+      line-height: 1.55;
+    }
+
+    .contact-widget a {
+      display: block;
+      color: var(--link);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.84rem;
+    }
+
+    .contact-widget a:last-child {
+      border-bottom: none;
+    }
+
+    .contact-widget a:hover {
+      color: var(--link-hover);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      margin: 0 2.5rem;
+      padding: 1.2rem 0 2.5rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    footer a {
+      color: var(--text-light);
+    }
+
+    footer a:hover {
+      color: var(--link);
+    }
+
+    /* ── MOON TOGGLE ── */
+    .theme-btn {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--col-bg);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      z-index: 999;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--link);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .content-area {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1.2rem;
+      }
+
+      .main-col {
+        padding-right: 0;
+        border-right: none;
+      }
+
+      .sidebar-col {
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .who-body {
+        grid-template-columns: 1fr;
+      }
+
+      .who-photo {
+        width: 100%;
+        height: 180px;
+      }
+
+      .site-header {
+        padding: 1.5rem 1.2rem 1rem;
+      }
+
+      .site-nav {
+        padding: 0 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-shell">
+
+    <!-- TITLE + TAGLINE -->
+    <div class="site-header">
+      <h1><a href="#">Ambadas Rautrao</a></h1>
+      <p class="site-tagline">Computer Science Student & Full Stack Developer</p>
+    </div>
+
+    <!-- NAV -->
+    <nav class="site-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner-placeholder">
+      <img src="images/cover.jpg" alt="Banner Image" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+    <!-- CONTENT + SIDEBAR -->
+    <div class="content-area">
+      <main class="main-col">
+
+        <h2 class="who-heading">Who am I?</h2>
+        <div class="who-body">
+          <div class="who-text">
+            <p>A second-year undergraduate student in Computer Science and Engineering with deep interest in
+              understanding and learning computer and its underlying languages.</p>
+            <p>Dedicated to deepening knowledge in algorithms, data structures, networking, operating system while
+              pursuing opportunities to apply theoretical concepts in practical projects.</p>
+          </div>
+          <div class="who-photo"><img src="images/my_image.jpg" alt="My Photo"
+              style="width:100%;height:100%;object-fit:cover;border-radius:2px;display:block;"></div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section">
+          <h2 class="section-heading">Skills</h2>
+          <div class="skills-wrap">
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Git / Github</span>
+            <span class="skill-tag">Data Structures & Algorithms</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">DBMS</span>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="section">
+          <h2 class="section-heading">Featured Projects</h2>
+
+          <div class="project">
+            <div class="project-meta">
+              <span class="project-tag">Backend</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">Node.js</span>
+            </div>
+            <h3><a href="https://github.com/Rautrao">College API</a></h3>
+            <p>Provides a strong backend for any college website, designed to manage institutional data efficiently
+              using MongoDB as the database.</p>
+            <div class="project-links">
+              <a href="https://github.com/Rautrao">↗ GitHub</a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-meta">
+              <span class="project-tag">Backend</span>
+              <span class="project-tag">MySQL</span>
+            </div>
+            <h3><a href="https://github.com/Rautrao">Employee API</a></h3>
+            <p>An API to manage and organize employee data seamlessly using MySQL as the primary database.</p>
+            <div class="project-links">
+              <a href="https://github.com/Rautrao">↗ GitHub</a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-meta">
+              <span class="project-tag">Frontend</span>
+              <span class="project-tag">Web Clones</span>
+            </div>
+            <h3><a href="https://github.com/Rautrao">Web Application Clones</a></h3>
+            <p>Built fully functional frontend clones of popular applications like Amazon and YouTube. Also developed a
+              Rock Paper Scissor game.</p>
+            <div class="project-links">
+              <a href="https://github.com/Rautrao">↗ GitHub</a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-meta">
+              <span class="project-tag">Backend</span>
+              <span class="project-tag">C</span>
+            </div>
+            <h3><a href="https://github.com/Rautrao">C-server</a></h3>
+            <p>A basic server built entirely from scratch using C as the backend language to deepen understanding of
+              networking concepts.</p>
+            <div class="project-links">
+              <a href="https://github.com/Rautrao">↗ GitHub</a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-meta">
+              <span class="project-tag">Frontend</span>
+            </div>
+            <h3><a href="https://github.com/Rautrao">Todo App</a></h3>
+            <p>A task management application featuring secure user authentication.</p>
+            <div class="project-links">
+              <a href="https://github.com/Rautrao">↗ GitHub</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="section">
+          <h2 class="section-heading">Education</h2>
+          <div class="exp-item">
+            <div class="exp-role">Dual Degree (BTech + MTech) in Computer Science and Engineering</div>
+            <div class="exp-company">IIITDM Kancheepuram</div>
+            <div class="exp-year">Aug 2024 – Aug 2029 • CGPA: 8.55</div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar-col">
+
+        <div class="sidebar-widget">
+          <p class="sidebar-widget-title">Key Projects</p>
+          <ul>
+            <li><a href="https://github.com/Rautrao">College API</a></li>
+            <li><a href="https://github.com/Rautrao">Employee API</a></li>
+            <li><a href="https://github.com/Rautrao">Web Clones</a></li>
+            <li><a href="https://github.com/Rautrao">C-server</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget">
+          <p class="sidebar-widget-title">Languages</p>
+          <ul>
+            <li style="font-size: 0.84rem; color: var(--text-light);">English</li>
+            <li style="font-size: 0.84rem; color: var(--text-light);">Hindi</li>
+            <li style="font-size: 0.84rem; color: var(--text-light);">Marathi</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget">
+          <p class="sidebar-widget-title">Contact</p>
+          <div class="contact-widget">
+            <p>Looking for opportunities to apply theoretical concepts in practical projects.</p>
+            <a href="mailto:arrautrao@gmail.com">arrautrao@gmail.com</a>
+            <a href="https://github.com/Rautrao">GitHub</a>
+            <a href="https://www.linkedin.com/in/rautrao-ambadas-b4193b34a">LinkedIn</a>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      Ambadas Rautrao · Student · IIITDM Kancheepuram ·
+      <a href="https://github.com/Rautrao">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/rautrao-ambadas-b4193b34a">LinkedIn</a>
+    </footer>
+
+  </div>
+
+  <!-- MOON TOGGLE (bottom-right exactly like reference) -->
+  <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      btn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+    });
+  </script>
+
+</body>
+
+</html>
